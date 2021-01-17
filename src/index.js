@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Forms from "./Components/Forms";
+import App from "./Components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-ReactDOM.render(<Forms />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
