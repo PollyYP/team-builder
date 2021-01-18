@@ -4,20 +4,22 @@ import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 function Forms(props) {
   const defaultState = { name: "", email: "", role: "" };
-  const [newForm, setNewForm] = useState(defaultState);
+  const [inputText, setInputText] = useState(defaultState);
 
   const handleChange = (event) => {
-    setNewForm({ ...newForm, [event.target.name]: event.target.value });
+    setInputText({ ...inputText, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.setForms(newForm);
+  const addTeam = () => {
+    props.setTeams((savedTeamMember) => {
+      return [...savedTeamMember, inputText];
+    });
   };
 
   return (
-    <div className="forms">
-      <Form onSubmit={handleSubmit}>
+    <div>
+      <h3>Team Member Application</h3>
+      <Form className="forms">
         <FormGroup row>
           <Label for="exampleName" sm={2}>
             Name
@@ -26,43 +28,43 @@ function Forms(props) {
             <Input
               type="text"
               name="name"
-              id="exampleName"
               placeholder="Please type your name here"
               onChange={handleChange}
+              value={inputText.name}
             />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="examplePassword" sm={2}>
+          <Label for="exampleEmail" sm={2}>
             Email
           </Label>
           <Col sm={10}>
             <Input
               type="email"
               name="email"
-              id="exampleEmail"
               placeholder="Please type your email here"
               onChange={handleChange}
+              value={inputText.email}
             />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleSelect" sm={2}>
+          <Label for="exampleRole" sm={2}>
             Role
           </Label>
           <Col sm={10}>
             <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
+              type="text"
+              name="role"
               placeholder="Please type your role here"
               onChange={handleChange}
+              value={inputText.role}
             />
           </Col>
         </FormGroup>
         <FormGroup check row>
           <Col sm={{ size: 10, offset: 2 }}>
-            <Button>Submit</Button>
+            <Button onClick={addTeam}>Submit</Button>
           </Col>
         </FormGroup>
       </Form>
