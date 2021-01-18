@@ -5,11 +5,11 @@ export default function teamCards(props) {
   return (
     <div>
       <h4>Current Team Members</h4>
-      {Teams.map((team) => (
+      {Teams.map((teamMember) => (
         <div className="team-card">
-          <p>Name: {Teams.name}</p>
-          <p>Email: {Teams.email}</p>
-          <p>Role: {Teams.role}</p>
+          <p>Name: {teamMember.name}</p>
+          <p>Email: {teamMember.email}</p>
+          <p>Role: {teamMember.role}</p>
         </div>
       ))}
     </div>
